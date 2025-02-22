@@ -33,11 +33,14 @@ def match_features_and_draw(img1, img2, name, result, sort=True):
 	cv2.waitKey()
 
 class Cv2Image():
-	def __init__(self, img_name):
-		self.template = cv2.imread(f'{img_name}')
-		self.__name = img_name
-	def __str__(self):
-		return self.__name
+    def __init__(self, img_name):
+        self.template = cv2.imread(img_name)
+        self.__name = img_name
+        if self.template is None:
+            raise FileNotFoundError(f"Error: Cannot load image '{img_name}'. Check the file path and integrity.")
+    
+    def __str__(self):
+        return self.__name
 
 filenames = next(walk('./templates'), (None, None, []))[2]
 test_poketwo_spawns = next(walk('./test_poketwo_spawns'), (None, None, []))[2]

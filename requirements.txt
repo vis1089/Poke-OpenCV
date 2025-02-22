@@ -1,3 +1,4 @@
+flask
 opencv-python
-Pillow
-cv2
+pillow
+sqlite3
